@@ -1,47 +1,49 @@
-
-//console.log("bem vindo");
-var titulo = document.querySelector("#titulo");
-titulo.textContent = "Etecia Nutrição e Dietética"
+let pacientes = document.querySelectorAll(".paciente")
+pacientes.forEach(paciente =>{
 
 
+//Outro exemplo de FOR
+//for (var i = 0; i < pacientes.length; i++) {
+       // let paciente = pacientes [i];
+    //console.log(i)
+    //alert("error")
+    //Console.error("bien venido");
+    //Console.log("bem vindo");
+    //OU...
+    //pacientes.forEach(function(paciente){}
 
-// pegar o peso
-let paciente = document.querySelector(".paciente");
-let tdPeso = paciente.querySelector(".info-peso");
-let peso = tdPeso.textContent;
-console.log(paciente);
+    
+    let titulo = document.querySelector("#titulo")
+    //console.log(document.querySelector("h1"));
+    titulo.textContent = "ETECIA Desenvolvimento de sistemas";
+    //pegar o peso 
+    let peso =paciente.querySelector(".info-peso").textContent;
+    //Pegar a altura
+    let Altura = paciente.querySelector(".info-altura").textContent;
 
-// pegar a altura
-let tdAltura = paciente.querySelector(".info-altura");
-let altura = tdAltura.textContent;
-console.log(altura);
+    let pesoValido = true;
+    let alturaValida = true;
+    let tdImc = paciente.querySelector(".info-imc");
 
-let pesoValido = true;
-let alturalValida = true;
+    //VALIDAR DADOS
+    if (peso <= 0 || peso > 1000) {
+        pesoValido = false
+        tdImc.textContent ="Peso inválido";
+        paciente.classList.add("paciente-invalido");
+    }
+    if (Altura <= 0) {
+        alturaValida = false
+        tdImc.textContent ="Altura inválida";
+        paciente.classList.add("paciente-invalido");
+    }
+    if (pesoValido == true && alturaValida == true) {
+        //calcular o IMC
+        let imc = peso / Altura ** 2;
+        // calcular IMC
 
+        //escrever O iMC na tabela
+        tdImc.textContent = imc.toFixed (2);
+    }
 
-//validar dados
-if (peso <= 0 or || peso > 1000) {
-    console.error("peso inválido");
-    pesoValido = false;
-}
-
-if (altura < 0) {
-    console.error("altura inválida");
-    alturaValida = false;
-}
- if(pesoValido == true && alturaValida == true);
-
-// calcular IMC
-let imc = peso / altura ** 2;
-console.log(imc);
- 
-// ou ...
-//let imc = peso / (altura * altura);
-//console.log(imc);
-
-
-// escrever o IMC na tabela
-let tdIMC = paciente.querySelector(".info-imc");
-tdIMC.textContent = imc;
-
+})
+;
